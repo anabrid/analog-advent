@@ -5,7 +5,7 @@
 <img src="graphics/dalle2.webp" class="main" title="I whish this was not Dalle/ChatGPT generated. If you can do figures and want wo work with us, drop us a mail.">
 
 
-<p>Christmas time begins with an inventory of the reindeer fleet. Helmi scratched his head, eyeing the bustling reindeer with growing skepticism. Santa had insisted on expanding the herd this year once again. Counting them individually had proven tedious, and multiplying stables by boxes felt far too theoretical for the chaos at hand. Instead, he wheeled out the trusty weighing machine—a beautifully intricate device with a large, circular scale and a needle that danced with every shift of weight. He set it just outside the gate and sprinkled a trail of oats to coax the reindeer through, one by one. As they trotted onto the platform, the needle swung and settled, tallying the collective weight of the herd. Finn jotted down the reading and grinned. “Twelve reindeer, 1,205 pounds,” he mused, the math now undeniable. The reindeer themselves seemed pleased, snorting approval at his analog ingenuity.
+<p>Christmas time begins with an inventory of the reindeer fleet. Helmi scratched her head, eyeing the bustling reindeer with growing skepticism. Santa had insisted on expanding the herd this year once again. Counting them individually had proven tedious, and multiplying stables by boxes felt far too theoretical for the chaos at hand. Instead, she wheeled out the trusty weighing machine—a beautifully intricate device with a large, circular scale and a needle that danced with every shift of weight. Helmi set it just outside the gate and sprinkled a trail of oats to coax the reindeer through, one by one. As they trotted onto the platform, the needle swung and settled, tallying the collective weight of the herd. Helmi jotted down the reading and grinned. “Twelve reindeer, each 100 pounds, together 1,205 pounds,” she mused, the math now undeniable. The reindeer themselves seemed pleased, snorting approval at her analog ingenuity.
 
 <!--
 There were three stables, each with four hay-lined boxes. “Twelve,” Helmi calculated quickly, multiplying stables by boxes. But was that the real count? The reindeer themselves seemed unconvinced, their bells jingling in disarray. Helmi set up the trusty analog counter at the stable gate—a spinning wheel of brass levers that clicked with each pass. He flung the gate open, and the reindeer thundered through, each adding its weight to the counter’s tally. The brass clicked precisely twelve times. “Good job, team,” Helmi grinned. “You did the math for me.”
@@ -24,7 +24,7 @@ $quiz = new MultipleChoice("2");
 $quiz->checkbox("reversible", true);
 $quiz->checkbox("based on measurement", true);
 $quiz->checkbox("exact",      false);
-$quiz->checkbox("continous",  false); # both is true
+$quiz->checkbox("continous",  "both"); # both is true
 $quiz->checkbox("fast",       true);
 
 $quiz->print();

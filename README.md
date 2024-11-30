@@ -13,3 +13,9 @@ php -S localhost:8080
 ````
 
 on a developer system that has PHP-CLI installed.
+
+Important: The directory `user_data` must be writable by PHP.
+
+## Live system
+
+Status 2024-11-30: The website is launched on tinydichter, hosted on https://analog.wtf.

@@ -45,13 +45,16 @@ $day = isset($_GET['day']) ? $_GET['day'] : 0;
 <body>
 
 <header>
+    <a href="?user" class="user" title="Login and Manage user"><img src="style/user.svg"></a>
     <h1><a href="?">Computational Christmas</a></h1>
     <!-- today=<?=$today;?> -->
 </header>
 
 
 <?php
-if(!$day) {
+if(isset($_GET['user'])) {
+    print_user_managament_section();
+} else if(!$day) {
     echo '<section class="days"><ul>';
     for($day = 1; $day <= 24; $day++) {
         $opened = $day <= $today;

@@ -35,3 +35,30 @@ ready(function(){
 });
 
 
+var token_infos = null; // only saving as cookie delayed, for DSGVO
+
+new_token = async function(){
+    if(!document.getElementById("token"))
+        return;
+    document.getElementById("token").value = "loading..."
+    const response = await fetch("?new_token")
+    token_infos = await response.json()
+    document.getElementById("token").value = token_infos['token']
+    //document.getElementById("registration").style.display = "block";
+    
+}
+
+save_cookie = () => {
+    setCookie(token_infos['cookie_name'], token_infos['cookie_value'], 2*60);
+    // do not prevent default, continue submitting the form
+    return true;
+}
+
+ready(function(){
+    if(window.token) {
+        if(document.getElementById("token"))
+            document.getElementById("token").value = window.token;
+    } else {
+        new_token();
+    }
+})

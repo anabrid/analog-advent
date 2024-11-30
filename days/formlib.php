@@ -67,8 +67,13 @@ class MultipleChoice {
                 $checked = in_array($key, $this->saved_user_data);
                 $checked_html = $checked ? 'checked=checked' : '';
                 if($this->show_solution) {
-                    $correct = $checked == $valid_value;
-                    $correct_text = $correct ? "Correct!" : "Wrong";
+                    if($valid_value == "both") {
+                        $correct = true;
+                        $correct_text = "Both options are right";
+                    } else { // either true or false is correct
+                        $correct = $checked == $valid_value;
+                        $correct_text = $correct ? "Correct!" : "Wrong";
+                    }
                 } else {
                     $correct_text = "Correct solution revealed tomorrow";
                 }

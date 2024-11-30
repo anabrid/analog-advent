@@ -69,8 +69,28 @@ body > section {
     padding-top: 0;
 }
 
-header h1 {
+header h1, header a {
+    font-size: 140%;
     line-height: 140%;
+}
+
+header a.user {
+    display: block;
+    float: right;
+}
+
+header a.user:link, header a.user:visited {
+    opacity: .5;
+    transition: opacity 400ms ease-in-out;
+}
+
+header a.user:hover, header a.user:focus {
+    opacity: 1;
+}
+
+header a.user img {
+    height: 1.4em;
+    width: 1.4em;
 }
 
 section.days ul {
@@ -147,6 +167,10 @@ section.day h2 {
     margin: -5vh 0 5vh;
 }
 
+section.day a {
+    font-weight: bold;
+}
+
 section.day p {
     margin-top: 0;
 }
@@ -171,7 +195,7 @@ textarea.block {
     width: 100%;
 }
 
-p.info {
+.info {
   display: inline-block;
   padding: .2em 1em;
   margin-right: .5em;
