@@ -7,7 +7,7 @@ $today = date("j"); // without leading zero, thus int
 $month = date("m");
 if($month < 12) $today = 1;
 
-#$today = "22";
+$today = "2";
 
 function read_day($day_file, $section) {
     file_get_contents($day_file);
@@ -26,8 +26,14 @@ $day = isset($_GET['day']) ? $_GET['day'] : 0;
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="anachrist.css">
-    <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+    <!--<script src="https://unpkg.com/htmx.org@2.0.3"></script>-->
+    <script src="anachrist.js"></script>
     <script src="style/snow.js"></script>
+    <script>
+        <!-- Santa Ugly is in the house -->
+        window.cookie_name = "<?php echo $cookie_name; ?>";
+        window.cookie_split = "<?php echo $cookie_split; ?>";
+    </script>
 </head>
 <body>
 
@@ -103,4 +109,11 @@ if(!$day) {
 <div id="wave">
     <img src="style/white.svg">
 </div>
+<footer>
+    The Analog Advent is a service by
+    <a href="https://anabrid.com">anabrid</a>.
+    <br>
+    <a href="https://anabrid.com/imprint/">Imprint/Legal/Contact</a>
+</footer>
+
 <canvas id="snow"></canvas>

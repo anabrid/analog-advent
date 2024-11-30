@@ -21,15 +21,23 @@
 <section class="challenge">
 <p>We are giving away one <b><a href="https://the-analog-thing.org">THE ANALOG THING</a></b> analog computer among all participants. The prize draw and announcement will take place on Christmas Eve. In order to take part in the prize draw, it is necessary to answer the quizzes regularly.
 
+<noscript>
+    <p><b>Attention</b>: The Advent calendar uses JavaScript for user managament. Sorry, without javascript
+       you cannot participate in the price draw!</p>
+</noscript>
+
 <p>In order to take part in the quizzes (they are always resolved on the following day), your computer is automatically assigned an identifier token:
 
 <form method="post" onsubmit="save_cookie();">
 
 <p style="text-align:center">
 
-<input type="text" id="token" readonly> <button id="refresh-token" onclick="new_token(); return false;">Assign another token</button>
+    <input type="text" id="token" value="loading..." readonly>
+    <button id="refresh-token" onclick="if(confirm('Are you sure you want to wipe your token and assign a new one? This deletes all your replies and cannot be undone. Maybe save your old token first.')) new_token(); return false;">Assign another token</button>
 
 </p>
+
+<div id="registration">
 
 <p>If you want to take part in the prize draw, we need your contact details. Otherwise, please leave the following field empty.
 
@@ -42,13 +50,14 @@ By participating, you agree to <a href="https://en.wikipedia.org/wiki/General_Da
 <div style="text-align:center">
     <button style="font-size: 150%" type="submit">Register</button>
 </div>
+
+</div><!--/registration -->
+
 </form>
 
 </section>
 
 <script>
-
-const ready = fn => document.readyState !== 'loading' ? fn() : document.addEventListener('DOMContentLoaded', fn);
 
 var token_infos = null; // only saving as cookie delayed, for DSGVO
 
@@ -57,39 +66,23 @@ new_token = async function(){
     const response = await fetch("?new_token")
     token_infos = await response.json()
     document.getElementById("token").value = token_infos['token']
+    document.getElementById("registration").style.display = "block";
     
-}
-
-ready(new_token);
-
-//src: https://stackoverflow.com/a/24103596
-function setCookie(name,value,days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-}
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
-function eraseCookie(name) {   
-    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
 save_cookie = () => {
     setCookie(token_infos['cookie_name'], token_infos['cookie_value'], 2*60);
     // do not prevent default, continue submitting the form
 }
+
+ready(function(){
+    if(window.token) {
+        document.getElementById("token").value = window.token;
+        document.getElementById("registration").style.display = "none";
+    } else {
+        new_token();
+    }
+})
 
 </script>
 
