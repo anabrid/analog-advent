@@ -34,6 +34,13 @@ $day = isset($_GET['day']) ? $_GET['day'] : 0;
         window.cookie_name = "<?php echo $cookie_name; ?>";
         window.cookie_split = "<?php echo $cookie_split; ?>";
     </script>
+ 
+    <meta property="og:title" content="Computational Christmas by Anabrid">
+    <meta property="og:description" content="24 little adventures and riddles allow you to enter the world of analog computing.">
+    <meta property="og:image" content="https://analog.wtf/graphics/screenshot.png">
+    <meta property="og:url" content="https://analog.wtf">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Computational Christmas by Anabrid">   
 </head>
 <body>
 
