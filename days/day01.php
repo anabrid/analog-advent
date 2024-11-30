@@ -19,16 +19,25 @@
 </section>
 
 <section class="challenge">
-<p>We are giving away one <b><a href="https://the-analog-thing.org">THE ANALOG THING</a></b> analog computer among all participants. The prize draw and announcement will take place on Christmas Eve. In order to take part in the prize draw, it is necessary to answer the quizzes regularly. Your computer is currently assigned this token:
+<p>We are giving away one <b><a href="https://the-analog-thing.org">THE ANALOG THING</a></b> analog computer among all participants. The prize draw and announcement will take place on Christmas Eve. In order to take part in the prize draw, it is necessary to answer the quizzes regularly.
+
+<p>In order to take part in the quizzes (they are always resolved on the following day), your computer is automatically assigned an identifier token:
 
 <form method="post" onsubmit="save_cookie();">
-<p><input type="text" id="token" readonly> <button id="refresh-token" onclick="new_token();">Assign another token</button>
 
-<p>In the event that you have been drawn, we need your contact details.
+<p style="text-align:center">
 
-<textarea class="block" id="address" placeholder="Please provide your name, an email address, phone number or full postal address"></textarea>
+<input type="text" id="token" readonly> <button id="refresh-token" onclick="new_token(); return false;">Assign another token</button>
 
-<p>By participating, you agree to DSGVO. A cookie will be stored on your computer allowing you to track your replies. The cookie lifetime is 60 days. Furthermore, your replies and the token will be stored on our server so we can decide whether you participated regularly and therefore are elgable to participate in the contest.
+</p>
+
+<p>If you want to take part in the prize draw, we need your contact details. Otherwise, please leave the following field empty.
+
+<textarea class="block" id="address" placeholder="Provide your name and a way how we can contact you. This can be an email address, a social media handle, a phone number or postal address, depending on your preference."></textarea>
+
+<p style="font-size:75%; line-height: 130%;">
+By participating, you agree to <a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">GDPR</a>/<a href="https://de.wikipedia.org/wiki/Datenschutz-Grundverordnung">DSGVO</a>. A cookie will be stored on your computer allowing you to track your replies, surviging 60 days. Replies and the token are stored on our server. This allows us to do statistics on the participant results and to rank participation. Legal recourse is excluded with regard to the competition. Anabrid employees and relatives can do the quizzes but are excluded from the competition. Sorry guys.
+</p>
 
 <div style="text-align:center">
     <button style="font-size: 150%" type="submit">Register</button>

@@ -3,7 +3,11 @@
 $days_dir = "../days/"; # including trailing slash
 $today = date("j"); // without leading zero, thus int
 
-$today = "22";
+// Be able to start before December...
+$month = date("m");
+if($month < 12) $today = 1;
+
+#$today = "22";
 
 function read_day($day_file, $section) {
     file_get_contents($day_file);
@@ -11,7 +15,8 @@ function read_day($day_file, $section) {
 
 include 'users.php';
 
-$shows_day = isset($_GET['day']);
+$day = isset($_GET['day']) ? $_GET['day'] : 0;
+
 
 ?>
 <!doctype html>
@@ -33,7 +38,7 @@ $shows_day = isset($_GET['day']);
 
 
 <?php
-if(!$shows_day) {
+if(!$day) {
     echo '<section class="days"><ul>';
     for($day = 1; $day <= 24; $day++) {
         $opened = $day <= $today;
@@ -47,8 +52,8 @@ if(!$shows_day) {
     echo '</ul></section>';
 } else {
     echo '<section class="day">';
+    print "<h2>Dec $day</h2>";
     
-    $day = $_GET['day'];
     $valid = is_numeric($day) && 1 <= $day && $day <= 24;
     if(!$valid) {
         echo "Invalid day: $day";
