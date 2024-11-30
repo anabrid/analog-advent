@@ -37,27 +37,27 @@ class MultipleChoice {
         
         if(!$this->show_solution) { // poll still open
             if($this->token) {
-                print "<p>You are logged in as <em>{$this->token}</em></p>";
+                print "<p class='info'>You are logged in as <em>{$this->token}</em></p>";
                 
                 if($this->submitted_data) { // currently submitting
                     if($this->saved_user_data) {
-                        print "<p>Cannot accept further change in submission, already submittted.</p>";
+                        print "<p class='info'>Cannot accept further change in submission, already submittted.</p>";
                     } else {
                         $dataline = $this->token . ' ' . json_encode($this->submitted_data) . "\n";
                         file_put_contents($this->storage_file, $dataline, FILE_APPEND);
-                        print "<p>Your reply has been saved!</p>";
+                        print "<p class='info'>Your reply has been saved!</p>";
                         $this->saved_user_data = $this->submitted_data;
                     }
-                    print "<p>Your choice is displayed below but you cannot change it further</p>";
+                    print "<p class='info'>Your choice is displayed below but you cannot change it further</p>";
                 }
             } else {
-                print "<p>Hint: The vote is open but you have not registered, so you cannot participate. Please register first at Day 1.";
+                print "<p class='info'>Hint: The vote is open but you have not registered, so you cannot participate. Please register first at Day 1.";
             }
         } else { // poll closed
             if(!$user_data) {
-                print "<p>This day quiz is already closed. You are logged in as <em>{$this->token}</em> and did not participate. In the following, the corrrect solution is shown.</p>";
+                print "<p class='info'>This day quiz is already closed. You are logged in as <em>{$this->token}</em> and did not participate. In the following, the corrrect solution is shown.</p>";
             } else {
-                print "<p>This day quiz is closed and you participated as <em>{$this->token}</em>.";
+                print "<p class='info'>This day quiz is closed and you participated as <em>{$this->token}</em>.";
             }
         }
         
@@ -72,19 +72,19 @@ class MultipleChoice {
                 } else {
                     $correct_text = "Correct solution revealed tomorrow";
                 }
-                print "<br><input type='checkbox' $checked_html disabled=disabled> $key [$correct_text]";
+                print "<div><input type='checkbox' $checked_html disabled=disabled> $key [$correct_text]</div>";
             } else {
                 $disabled_html = $this->token && !$this->show_solution ? "" : "disabled=disabled";
                 $checked_html = $this->show_solution && $valid_value ? "checked=checked" : "";
                 $key = htmlentities($key);
-                print "<br><label for='$id'><input type='checkbox' name='{$this->field_name_php}' id='$id' $checked_html value='$key' $disabled_html> $key</label>";
+                print "<div><label for='$id'><input type='checkbox' name='{$this->field_name_php}' id='$id' $checked_html value='$key' $disabled_html> $key</label></div>";
             }
         }
     }
     
     function hand_in() {
         if(!$this->show_solution && !$this->submitted_data && !$this->saved_user_data)
-            print '<br><button type="submit">Hand in</button> You cannot change your answers afterwards! Results will displayed tommorrow.';
+            print '<p><button type="submit">Hand in</button></p><p>You cannot change your answers afterwards! Results will displayed tommorrow.</p>';
     }
     
 };

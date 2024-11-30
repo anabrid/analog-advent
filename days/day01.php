@@ -2,17 +2,8 @@
 
 <section class="story">
 
-<img src="graphics/dalle1.webp" id="fig" title="I whish this was not Dalle/ChatGPT generated. If you can do figures and want wo work with us, drop us a mail.">
+<img src="graphics/dalle1.webp" class="main" title="I whish this was not Dalle/ChatGPT generated. If you can do figures and want wo work with us, drop us a mail.">
 
-<style>
-#fig {
-    width: 100%; padding: 2em 0;
-}
-
-@media (min-width: 768px) {
- #fig {  float:right; width: 30vw; max-width: 500px; padding: 0; }
-}
-</style>
 
 <p>Welcome to the North Pole, where the countdown to Christmas has begun, the air buzzes with the hum of bustling elves and the almost magical ticking machines. Meet our protagonist: A clever, overworked yet determined elf named Helmi. Helmi isn't just any elf; he's the one who keeps the whole operation from unraveling while Santa leans back in his rocking chair. Helmi is surrounded by a sea of problems: broken gift sorters, tangled communication systems, and a looming energy crisis from the overworked workshop grid. As the days tick by, Helmi must not only untangle the chaos but also uncover ingenious solutions-involving the latest trends in computing. Together, you'll join Helmi's journey, solving one problem at a time, and maybe even uncovering a few secrets about the magic that keeps Christmas alive.
 
