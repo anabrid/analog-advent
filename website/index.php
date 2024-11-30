@@ -3,7 +3,7 @@
 $days_dir = "../days/"; # including trailing slash
 $today = date("j"); // without leading zero, thus int
 
-$today = "3";
+$today = "22";
 
 function read_day($day_file, $section) {
     file_get_contents($day_file);
@@ -11,6 +11,7 @@ function read_day($day_file, $section) {
 
 include 'users.php';
 
+$shows_day = isset($_GET['day']);
 
 ?>
 <!doctype html>
@@ -18,35 +19,34 @@ include 'users.php';
 <head>
     <title>Computational Christmas</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="anachrist.css">
     <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+    <script src="style/snow.js"></script>
 </head>
 <body>
 
 <header>
-    <h1>Computational Christmas (php)</h1>
-    <p>Today is <?=$today;?>. You are <?=$token?$token:"not logged in";?></p>
+    <h1><a href="?">Computational Christmas</a></h1>
+    <!-- today=<?=$today;?> -->
 </header>
 
 
-
 <?php
-if(!isset($_GET['day'])) {
-    echo '<ul>';
+if(!$shows_day) {
+    echo '<section class="days"><ul>';
     for($day = 1; $day <= 24; $day++) {
         $opened = $day <= $today;
+        $today_class = $day == $today ? 'today' : '';
         echo "<li>";
         if($opened)
-            echo "<a href='?day=$day'>$day</a>";
+            echo "<a href='?day=$day' class='open $today_class'>$day</a>";
         else
-            echo $day;
-        
-        if($day == $today)
-            echo " (today!)";
+            echo "<a class='not-open'>$day</a>";
     }
+    echo '</ul></section>';
 } else {
     echo '<section class="day">';
-    echo "<a href='?'>Back to overview</a>";
     
     $day = $_GET['day'];
     $valid = is_numeric($day) && 1 <= $day && $day <= 24;
@@ -94,3 +94,8 @@ if(!isset($_GET['day'])) {
 }
 
 ?>
+
+<div id="wave">
+    <img src="style/white.svg">
+</div>
+<canvas id="snow"></canvas>

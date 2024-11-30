@@ -7,18 +7,20 @@
 </section>
 
 <section class="challenge">
-<p>We are giving away one <b>THE ANALOG THING</b> analog computer among all participants. The prize draw and announcement will take place on Christmas Eve. In order to take part in the prize draw, it is necessary to answer the quizzes regularly. Your computer is currently assigned this token:
+<p>We are giving away one <b><a href="https://the-analog-thing.org">THE ANALOG THING</a></b> analog computer among all participants. The prize draw and announcement will take place on Christmas Eve. In order to take part in the prize draw, it is necessary to answer the quizzes regularly. Your computer is currently assigned this token:
 
 <form method="post" onsubmit="save_cookie();">
 <p><input type="text" id="token" readonly> <button id="refresh-token" onclick="new_token();">Assign another token</button>
 
 <p>In the event that you have been drawn, we need your contact details.
 
-<textarea id="address" placeholder="Please provide your name, an email address, phone number or full postal address"></textarea>
+<textarea class="block" id="address" placeholder="Please provide your name, an email address, phone number or full postal address"></textarea>
 
 <p>By participating, you agree to DSGVO. A cookie will be stored on your computer allowing you to track your replies. The cookie lifetime is 60 days. Furthermore, your replies and the token will be stored on our server so we can decide whether you participated regularly and therefore are elgable to participate in the contest.
 
-<button type="submit">Register</button>
+<div style="text-align:center">
+    <button style="font-size: 150%" type="submit">Register</button>
+</div>
 </form>
 
 </section>
