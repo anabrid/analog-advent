@@ -1,12 +1,33 @@
 <?php
 
 $days_dir = "../days/"; # including trailing slash
-
 $today = date("j"); // without leading zero, thus int
 
+$today = "3";
+
+function read_day($day_file, $section) {
+    file_get_contents($day_file);
+}
+
+include 'users.php';
+
+
 ?>
-<h2>Analog Advent</h2>
-<p>24 experiments until christmas. Today is <?=$today;?></p>
+<!doctype html>
+<html>
+<head>
+    <title>Computational Christmas</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="anachrist.css">
+    <script src="https://unpkg.com/htmx.org@2.0.3"></script>
+</head>
+<body>
+
+<header>
+    <h1>Computational Christmas (php)</h1>
+    <p>Today is <?=$today;?>. You are <?=$token?$token:"not logged in";?></p>
+</header>
+
 
 
 <?php
@@ -24,10 +45,18 @@ if(!isset($_GET['day'])) {
             echo " (today!)";
     }
 } else {
+    echo '<section class="day">';
+    echo "<a href='?'>Back to overview</a>";
+    
     $day = $_GET['day'];
     $valid = is_numeric($day) && 1 <= $day && $day <= 24;
     if(!$valid) {
         echo "Invalid day: $day";
+        exit;
+    }
+    if($day > $today)  {
+        header("HTTP/1.1 401 Unauthorized");
+        print "Nice try! This door is not yet open.";
         exit;
     }
     
@@ -56,9 +85,11 @@ if(!isset($_GET['day'])) {
         exit;
     }
     
-    $day_file_content = file_get_contents($day_file);
+    #$day_file_content = file_get_contents($day_file);
+    include $day_file;
     
-    echo $day_file_content;
+    #echo $day_file_content;
+    echo '</section>'; // day
     
 }
 

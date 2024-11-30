@@ -13,10 +13,22 @@ There were three stables, each with four hay-lined boxes. “Twelve,” Helmi ca
 <section class="challenge">
 <p>Helmi used a trick: He did not do the slow and error-prone arithmetics himself, for instance by  multiplying stables by boxes. Instead, he let the reindeers do the math for him, just by reading off the scale at a single time once the herd was in place. Measuring instead of computing is very powerful. But is such a principle...
 
-[ ] reversible
-[ ] invertible
-[ ] continous
-[ ] exact
-[ ] based on measurement
+<form method="post">
+<?php
+include 'formlib.php';
+
+$quiz = new MultipleChoice("2");
+$quiz->checkbox("reversible", true);
+$quiz->checkbox("invertible", false);
+$quiz->checkbox("continous",  false);
+$quiz->checkbox("exact",      false);
+$quiz->checkbox("based on measurement", true);
+
+$quiz->print();
+
+$quiz->hand_in();
+?>
+
+</form>
 
 </section>
