@@ -30,7 +30,12 @@ on a developer system that has PHP-CLI installed.
   It would be nice to improve that.
 * System has an unconventional user handling with "tokens" and a homebrewn chaotic
   cookie managament. Obviously there is an urgent need to improve that.
-* Traditional PHP provides near-to-no protection against HTML injection or CORS.
+  Edit: The *secret* to avoid free user names was accidentally put online with the inital
+  github commit, so this needs a rework anyway.
+* Current traditional PHP provides near-to-no protection against HTML injection or CORS.
+  This is not really a problem since users get displayed their own code only and never see
+  data from other users. Furthermore, the current deployment seperates the website clearly
+  from anything important.
 * Many problems could be solved when using a proper framework such as Symfony or Django.
   The reason we did not choose a framework was primarily the flexibility of having generic
   kind of quizzes (not limited to something which has to map on a database) and the ad-hoc
