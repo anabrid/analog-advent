@@ -24,6 +24,7 @@ class MultipleChoice {
                 list($storage_token, $storage_data) = explode(" ", $line, 2);
                 if($storage_token == $this->token) {
                     $this->saved_user_data = json_decode($storage_data);
+                    break;
                 }
             }        
     }
@@ -39,16 +40,15 @@ class MultipleChoice {
             if($this->token) {
                 print "<p class='info'>You are logged in as <em>{$this->token}</em></p>";
                 
-                if($this->submitted_data) { // currently submitting
-                    if($this->saved_user_data) {
-                        print "<p class='info'>Cannot accept further change in submission, already submittted.</p>";
-                    } else {
-                        $dataline = $this->token . ' ' . json_encode($this->submitted_data) . "\n";
-                        file_put_contents($this->storage_file, $dataline, FILE_APPEND);
-                        print "<p class='info'>Your reply has been saved!</p>";
-                        $this->saved_user_data = $this->submitted_data;
-                    }
-                    print "<p class='info'>Your choice is displayed below but you cannot change it further</p>";
+                if($this->saved_user_data) {
+                    print "<p class='info'>Thanks for participating in this day. Your answers are displayed below, results are revealed tomorrow.</p>";
+                } else if($this->submitted_data) { // currently submitting
+                    $dataline = $this->token . ' ' . json_encode($this->submitted_data) . "\n";
+                    file_put_contents($this->storage_file, $dataline, FILE_APPEND);
+                    print "<p class='info'>Your reply has been saved!</p>";
+                    $this->saved_user_data = $this->submitted_data;
+
+                    print "<p class='info'>Thanks for participating in this day. Your answers are displayed below, results are revealed tomorrow.</p>";
                 }
             } else {
                 print "<p class='info'>Hint: The vote is open but you have not registered, so you cannot participate. Please <a href='?user'>register first</a>, then vote again.";
@@ -75,9 +75,10 @@ class MultipleChoice {
                         $correct_text = $correct ? "Correct!" : "Wrong";
                     }
                 } else {
-                    $correct_text = "Correct solution revealed tomorrow";
+                    $correct_text = "";#"Correct solution revealed tomorrow";
                 }
-                print "<div><input type='checkbox' $checked_html disabled=disabled> $key [$correct_text]</div>";
+                $correct_text = $correct_text ? "<span class='correct'>[$correct_text]</span>" : "";
+                print "<div><input type='checkbox' $checked_html disabled=disabled> $key $correct_text</div>";
             } else {
                 $disabled_html = $this->token && !$this->show_solution ? "" : "disabled=disabled";
                 $checked_html = $this->show_solution && $valid_value ? "checked=checked" : "";

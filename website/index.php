@@ -7,7 +7,7 @@ $today = date("j"); // without leading zero, thus int
 $month = date("m");
 if($month < 12) $today = 1;
 
-#$today = "2";
+$today = "2";
 
 function read_day($day_file, $section) {
     file_get_contents($day_file);
@@ -92,7 +92,7 @@ if(isset($_GET['user'])) {
         exit;
     } elseif(count($day_candidates) > 1) {
         echo "Too much day candidates: ";
-        echo var_dump($day_candidates);
+        //echo var_dump($day_candidates);
         exit;
     }
     
