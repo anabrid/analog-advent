@@ -45,7 +45,10 @@ $day = isset($_GET['day']) ? $_GET['day'] : 0;
 <body>
 
 <header>
-    <a href="?user" class="user" title="Login and Manage user"><img src="style/user.svg"></a>
+    <nav>
+        <a href="?faq" class="faq" title="Frequently asked questions"><img src="style/faq.svg"></a>
+        <a href="?user" class="user" title="Login and Manage user"><img src="style/user.svg"></a>
+    </nav>
     <h1><a href="?">Computational Christmas</a></h1>
     <!-- today=<?=$today;?> -->
 </header>
@@ -54,6 +57,8 @@ $day = isset($_GET['day']) ? $_GET['day'] : 0;
 <?php
 if(isset($_GET['user'])) {
     print_user_managament_section();
+} if(isset($_GET['faq'])) {
+    include 'faq.php';
 } else if(!$day) {
     echo '<section class="days"><ul>';
     for($day = 1; $day <= 24; $day++) {
