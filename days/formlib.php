@@ -51,7 +51,7 @@ class MultipleChoice {
                     print "<p class='info'>Your choice is displayed below but you cannot change it further</p>";
                 }
             } else {
-                print "<p class='info'>Hint: The vote is open but you have not registered, so you cannot participate. Please register first at Day 1.";
+                print "<p class='info'>Hint: The vote is open but you have not registered, so you cannot participate. Please <a href='?user'>register first</a>, then vote again.";
             }
         } else { // poll closed
             if(!$user_data) {

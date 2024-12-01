@@ -179,7 +179,7 @@ function print_user_managament_section() {
 
     <p style="text-align:center">
         <input type="hidden" name="submitted" value="true">
-        <input type="text" id="token" name="token" value="loading...">
+        <input type="text" id="token-field" name="token" value="loading...">
         <button id="refresh-token" onclick="if(confirm('Are you sure you want to wipe your token and assign a new one? This deletes all your replies and cannot be undone. Maybe save your old token first.')) new_token(); return false;">Assign another token</button>
 
     </p>

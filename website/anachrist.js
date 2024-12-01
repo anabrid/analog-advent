@@ -38,12 +38,12 @@ ready(function(){
 var token_infos = null; // only saving as cookie delayed, for DSGVO
 
 new_token = async function(){
-    if(!document.getElementById("token"))
+    if(!document.getElementById("token-field"))
         return;
-    document.getElementById("token").value = "loading..."
+    document.getElementById("token-field").value = "loading..."
     const response = await fetch("?new_token")
     token_infos = await response.json()
-    document.getElementById("token").value = token_infos['token']
+    document.getElementById("token-field").value = token_infos['token']
     //document.getElementById("registration").style.display = "block";
     
 }
@@ -56,8 +56,8 @@ save_cookie = () => {
 
 ready(function(){
     if(window.token) {
-        if(document.getElementById("token"))
-            document.getElementById("token").value = window.token;
+        if(document.getElementById("token-field"))
+            document.getElementById("token-field").value = window.token;
     } else {
         new_token();
     }

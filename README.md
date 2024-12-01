@@ -19,3 +19,10 @@ Important: The directory `user_data` must be writable by PHP.
 ## Live system
 
 Status 2024-11-30: The website is launched on tinydichter, hosted on https://analog.wtf.
+
+## Known limitations
+
+* Flat files. By intention, but has sever limits.
+* System has an unconventional user handling with "tokens" and a homebrewn chaotic
+  cookie managament.
+* Traditional PHP provides near-to-no protection against HTML injection or CORS.
