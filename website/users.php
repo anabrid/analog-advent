@@ -41,7 +41,7 @@ if(isset($_COOKIE[$cookie_name])) {
     }
     
     $correct_signature = $token && $signature == $signature_proof;
-    header('X-Anachrist-Token', $correct_signature ? 'accepted' : 'declined');
+    header('X-Anachrist-Token: ' . ($correct_signature ? 'accepted' : 'declined'));
     if(!$correct_signature)
         $token = null; # basically logout on server side
 }
