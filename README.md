@@ -2,27 +2,39 @@
 
 This repository holds the implementation of the anabrid advent calendar website 2024.
 Relevant ideas and concepts are collected at https://outline.anabrid.com/doc/analog-advent-calendar-0i37810U6T
-and subpages.
+and subpages. The website was launched on the anabrid *tinydichter* VPS, deployed using
+Caddy & PHP-FPM, manually synced to git remotes and public available at https://analog.wtf.
 
-## Deployment
+Furthermore, at Dec 01 a stripped down fork/copy of the repo was released at
+https://github.com/anabrid/analog-advent containing only the data up to current day in
+December.
 
-The actual website is just a PHP file. It can be launched for testing by calling
+## Code and Development
+
+This website is kind of traditional PHP, everything is running from `website/index.php`.
+This page can be launched for testing by calling:
 
 ```
-php -S localhost:8080
-````
+cd website && php -S localhost:8080
+```
 
-on a developer system that has PHP-CLI installed.
+*Important*: The directory `user_data` must be writable by PHP.
 
-Important: The directory `user_data` must be writable by PHP.
+## Design choices and improvements neccessary
 
-## Live system
-
-Status 2024-11-30: The website is launched on tinydichter, hosted on https://analog.wtf.
-
-## Known limitations
-
-* Flat files. By intention, but has sever limits.
+* This is a flat file design so it can sync nicely with git. The flat files are an ugly mix
+  of CSV and JSON(-Lines), basically mimics a file based document database. The current design
+  is not easily extendable, for instance we don't track any dates when user changes happen.
+  It would be nice to improve that.
 * System has an unconventional user handling with "tokens" and a homebrewn chaotic
-  cookie managament.
-* Traditional PHP provides near-to-no protection against HTML injection or CORS.
+  cookie managament. Obviously there is an urgent need to improve that.
+  Edit: The *secret* to avoid free user names was accidentally put online with the inital
+  github commit, so this needs a rework anyway.
+* Current traditional PHP provides near-to-no protection against HTML injection or CORS.
+  This is not really a problem since users get displayed their own code only and never see
+  data from other users. Furthermore, the current deployment seperates the website clearly
+  from anything important.
+* Many problems could be solved when using a proper framework such as Symfony or Django.
+  The reason we did not choose a framework was primarily the flexibility of having generic
+  kind of quizzes (not limited to something which has to map on a database) and the ad-hoc
+  approach of the general project without a clear perspective in mind.
