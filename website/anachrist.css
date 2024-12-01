@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Griffy&family=Mystery+Quest&display=swap');
+
+body {
+    margin: 0; padding: 0;
+    background-color: #2b307b;
+    color: #eaeaf2;
+
+    font-family: "Mystery Quest", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    
+    font-size: 22px;
+    line-height: 160%;
+}
+
+a:link, a:visited {
+    color: white;
+    text-decoration: none;
+    transition: color 400ms ease-in-out;
+}
+
+header a:hover,
+header a:focus,
+section.story a:hover,
+section.story a:focus {
+    color: color-mix(in srgb, rgb(43, 48, 123) 100%, white 80%);
+}
+
+#wave {
+    position: fixed;
+    bottom: -10px;
+    left: -2px;
+    width: 110%;
+    height: auto;
+    z-index: 2;
+}
+
+#wave img {
+    width: 100%;
+}
+
+#snow {
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    z-index: 0;
+}
+
+
+h1, h2, h3 {
+    margin: 0; padding: 0;
+    text-align: center;
+}
+
+body > header, body > section, body > footer {
+    padding: 6vh 3vw;
+    position: relative;
+    z-index: 1;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 5em;
+    margin-bottom: 20vh;
+    font-size: 80%;
+}
+
+body > section {
+    padding-top: 0;
+}
+
+header h1, header a {
+    font-size: 140%;
+    line-height: 140%;
+}
+
+header a.user {
+    display: block;
+    float: right;
+}
+
+header a.user:link, header a.user:visited {
+    opacity: .5;
+    transition: opacity 400ms ease-in-out;
+}
+
+header a.user:hover, header a.user:focus {
+    opacity: 1;
+}
+
+header a.user img {
+    height: 1.4em;
+    width: 1.4em;
+}
+
+section.days ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: stretch;
+}
+
+section.days li {
+    width: 14vh;
+    height: 14vh;
+    
+    margin-right: 3vh;
+    margin-bottom: 3vh;
+}
+
+section.days a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    background-color: color-mix(in srgb, rgb(43, 48, 123) 100%, white 5%);
+    transition: background-color 400ms ease-in-out;
+    height: 100%;
+    text-align: center;
+    vertical-align: center;
+    
+    text-decoration: none;
+    
+    font-size: 130%;
+}
+
+section.days a.open {
+    background-color: color-mix(in srgb, rgb(43, 48, 123) 100%, white 23%);
+}
+
+section.days a.open:hover, section.days a.open:focus {
+    background-color: color-mix(in srgb, rgb(43, 48, 123) 100%, white 60%);
+}
+
+section.days a.not-open {
+    opacity: .7;
+}
+
+section.day {
+    background-color: rgba(0,0,0, .5);
+    border-radius: 9vw;
+   
+    padding: 9vw 9vw 0 9vw;
+    margin: 0 6vw;
+    margin-bottom: 10vw;
+}
+
+section.challenge {
+    margin: 0 -9vw;
+    padding: 3vh 9vw 5vh;
+    background-color: rgba(255,255,255,.2);
+    
+    border-bottom-left-radius: 9vw;
+    border-bottom-right-radius: 9vw;
+}
+
+section.day h1 {
+    display: none; /* the naming title */
+}
+
+section.day h2 {
+    /* the auto title "Dec 1" */
+    margin: -5vh 0 5vh;
+}
+
+section.day a {
+    font-weight: bold;
+}
+
+section.day p {
+    margin-top: 0;
+}
+
+.story img.main {
+    width: 100%; padding: 2em 0;
+}
+
+@media (min-width: 768px) {
+ .story img.main {  float:right; width: 30vw; max-width: 500px; padding: 0; }
+}
+
+/* Forms */
+
+input[type="text"], button, textarea {
+    font-family: inherit;
+    line-height: inherit;
+    padding: .1em 1em;
+}
+
+textarea.block {
+    width: 100%;
+}
+
+.info {
+  display: inline-block;
+  padding: .2em 1em;
+  margin-right: .5em;
+  border-radius: .8em;
+  background-color: rgba(0,0,0, .7);
+}
