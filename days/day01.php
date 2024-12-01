@@ -11,15 +11,27 @@
 
 <section class="challenge">
 <p>We are giving away one <b><a href="https://the-analog-thing.org">THE ANALOG THING</a></b> analog computer among all participants. The prize draw and announcement will take place on Christmas Eve. In order to take part in the prize draw, it is necessary to answer the quizzes regularly.
+
+<?php
+
+if(!$token) {
+
+?>
 You are invited to register in order to participate:
+</p>
 
 
 <div style="text-align:center">
     <button style="font-size: 150%" onclick="location.assign('?user')">Register</button>
 </div>
 
-</div><!--/registration -->
+<?php
+}else{
+?>
 
-</form>
+</p>
+<p class="info">You are already registered as <em><?php echo $token ?></em>.</p>
+
+<?php } ?>
 
 </section>
