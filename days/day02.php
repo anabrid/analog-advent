@@ -32,7 +32,7 @@ $quiz->print();
 if($quiz->show_solution) {
 ?>
 
-<p>We have seen computing by analogy, since the scale is just summing numbers. This is not
+<p class="info">We have seen computing by analogy, since the scale is just summing numbers. This is not
 so exact, but very fast. It can work with both discrete (such as reindeers) and continous
 quantities (such as estimating and "adding" the water in a a bucket).</p>
 
