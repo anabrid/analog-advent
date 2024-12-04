@@ -61,4 +61,23 @@ ready(function(){
     } else {
         new_token();
     }
+   
+    // Having fun with forms
+    document.querySelectorAll('form.inplace').forEach(form => {
+        form.setAttribute('hx-post', window.location.href);
+        form.setAttribute('hx-target', 'this');
+        form.setAttribute('hx-swap', 'inner');
+        form.setAttribute('hx-indicator', '#spinner'); // Show a spinner during the request
+        form.setAttribute('hx-select', 'form.inplace');
+        htmx.process(form);
+    });
+    
+    /*
+    var swapform = document.getElementById('swapform')
+    if(swapform)
+      swapform.addEventListener('submit', function (event) {
+        event.preventDefault();
+        htmx.ajax('POST', window.location.href, { target: '#swapform', select: '#swapform', swap: 'inner', indicator: '#spinner' });
+      });
+    */
 })

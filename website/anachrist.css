@@ -33,6 +33,7 @@ section.story a:focus {
     width: 110%;
     height: auto;
     z-index: 2;
+    pointer-events: none; /* click-throught */
 }
 
 #wave img {
@@ -74,21 +75,20 @@ header h1, header a {
     line-height: 140%;
 }
 
-header a.user {
-    display: block;
+header nav {
     float: right;
 }
 
-header a.user:link, header a.user:visited {
+header nav a:link, header nav a:visited {
     opacity: .5;
     transition: opacity 400ms ease-in-out;
 }
 
-header a.user:hover, header a.user:focus {
+header nav a:hover, header nav a:focus {
     opacity: 1;
 }
 
-header a.user img {
+header nav a img {
     height: 1.4em;
     width: 1.4em;
 }
@@ -195,10 +195,29 @@ textarea.block {
     width: 100%;
 }
 
-.info {
+.info, span.correct, span.wrong {
   display: inline-block;
   padding: .2em 1em;
   margin-right: .5em;
   border-radius: .8em;
   background-color: rgba(0,0,0, .7);
 }
+
+span.wrong {
+    background-color: rgba(145, 13, 13, 0.7);
+}
+
+span.correct {
+    background-color: rgba(30, 145, 13, 0.7);
+}
+
+
+dl dt {
+   font-weight: bold;
+}
+
+dl dd {
+   margin-bottom: 1.5em;
+}
+
+

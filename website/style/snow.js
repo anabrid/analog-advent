@@ -35,7 +35,6 @@
 		for (var i = 0; i < amount; i++) {
 			temp = new point();
 		};
-		console.log(points);
 	}
 	//Point drawer
 	function draw (obj) {

@@ -25,11 +25,23 @@ if(isset($_COOKIE[$cookie_name])) {
     if(count($cookie_vals) == 2) {
         $token = $cookie_vals[0];
         $signature = $cookie_vals[1];
+    } else {
+        $token = null;
+        $signature = null;
     }
     $signature_proof = hash_hmac('sha256', $token, $server_handout_secret);
     
-    $correct_signature = $signature == $signature_proof;
-    header('X-Anachrist-Token', $correct_signature ? 'accepted' : 'declined');
+    // since the server_handout_secret was accidentally shared on github,
+    // make another test to ensure that the chosen name at least doesnt break
+    // the shitty flat file format
+    if(!preg_match("/^[a-zA-Z0-9]*$/", $token)) {
+        //echo "Will not accept the given token";
+        //exit;
+        $token = null;
+    }
+    
+    $correct_signature = $token && $signature == $signature_proof;
+    header('X-Anachrist-Token: ' . ($correct_signature ? 'accepted' : 'declined'));
     if(!$correct_signature)
         $token = null; # basically logout on server side
 }
