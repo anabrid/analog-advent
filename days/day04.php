@@ -13,11 +13,11 @@
 <p>What is the principle Helmi found to be neccessary for the next level of computing?
 
 
-<form method="post">
+<form method="post" class="inplace">
 <?php
 include 'formlib.php';
 
-$quiz = new MultipleChoice("3");
+$quiz = new MultipleChoice("4");
 $quiz->checkbox("Real local on-device computation", true);
 $quiz->checkbox("Well the edge is better then nothing, isn't it?", "both");
 $quiz->checkbox("Compute Cloud's are fine but just need to go beyond digital processing",  true);

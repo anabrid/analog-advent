@@ -16,7 +16,7 @@ There were three stables, each with four hay-lined boxes. “Twelve,” Helmi ca
 <section class="challenge">
 <p>Helmi used a trick: He did not do the slow and error-prone arithmetics himself, for instance by  multiplying stables by boxes. Instead, he let the reindeers do the math for him, just by reading off the scale at a single time once the herd was in place. Measuring instead of computing is very powerful. What statements can you make about the properties of this computational approach?
 
-<form method="post">
+<form method="post" id='swapform'>
 <?php
 include 'formlib.php';
 

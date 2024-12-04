@@ -16,7 +16,7 @@
 TSP within a &#x1D4AA;(<em>n</em><sup>2</sup>) runtime, with &#x1D4AA; being the <a href="https://en.wikipedia.org/wiki/Big_O_notation">Landau notation</a> and <em>n</em> the number of households.
 In 2024, how much longer does it take Santa to visit all households, relative to 2014?
 
-<form method="post">
+<form method="post" class="inplace">
 <?php
 include 'formlib.php';
 
@@ -31,7 +31,7 @@ $quiz->print();
 
 #echo '<pre>'; var_dump($quiz); echo '</pre>';
 
-if($quiz->show_solution) {
+if($quiz->user_data) {
 ?>
 
 <p>The runtime difference is 2.1<sup>2</sup> / 1.8<sup>2</sup> = 1.36. That means
