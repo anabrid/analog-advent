@@ -2,18 +2,49 @@
 
 <section class="story">
 
-<p>Helmi sat by Santa’s armchair, watching as he polished off another plate of cookies. His cheeks were rosy, but not the healthy kind—Santa’s health had been declining over the years, and it was becoming a serious concern. The digital insulin pump he’d been relying on was draining its battery faster than his sleigh on Christmas Eve, struggling to process data in real time. “This won’t do,” Helmi muttered, examining the sluggish device. 
+<img src="graphics/canva06.jpg" class="main" title="I whish this was not Dalle/ChatGPT generated. If you can do figures and want wo work with us, drop us a mail.">
 
-<p>By the glow of the workshop’s lanterns, Helmi began assembling an analog processor designed for real-time insulin regulation. No digital overhead, no delays—just precise feedback loops built on mechanical and fluidic systems. The prototype was ready by morning, its tiny gears and resistors humming like a clockwork heart. Helmi attached it to Santa’s belt, watching as it adjusted instantly to his glucose levels. “There,” Helmi said with a smile. “Healthy and efficient, just in time for Christmas.” Santa gave a hearty laugh, his eyes twinkling brighter already.
+<p>Helmi sat by Santa’s armchair, her brow furrowed as his trembling hands gripped the armrests. His iconic red hat wobbled with every shake, and his foot tapped the floor, sending ornaments rattling. “It’s getting worse,” she murmured. The doctor elves had diagnosed him with a magical form of tremor, worsened by holiday stress. The digital brain pacemaker they tried faltered, lagging behind Santa’s magic-infused neural rhythms and draining its battery far too quickly. “This won’t do,” Helmi muttered, setting the device aside.
 
+<p>Determined to find a solution, she crafted an analog brain pacemaker—a device tuned to work seamlessly with Santa’s unique biology, using oscillators and fluidic circuits to adapt instantly without power drain. Once attached behind Santa’s ear, the trembling stopped almost immediately. Santa flexed his hands, his smile returning. “Helmi, you’ve done it!” he said, his voice steady and clear. Helmi grinned, knowing analog had once again saved Christmas.
 </section>
 
 <section class="challenge">
 
-<p>Why is an analog processor better suited?
+<p>Helmi unlocked the future of medical technology: smart sensors capable of processing information directly, without the inefficiencies of digital conversion. Tackling Deep Brain Stimulation as her first project was no small feat, but the potential savings in energy and performance are staggering, aren’t they? Take a guess:
 
-[ ] Faster
-[ ] Energy saving
-[ ] Energy harvesting
+
+<form method="post" id='swapform'>
+<?php
+include 'formlib.php';
+
+$quiz = new MultipleChoice("6");
+$quiz->checkbox("Does it save energy through analog processing?", true);
+$quiz->checkbox("Does it enable smaller implants?", true);
+$quiz->checkbox("Does it eliminate the need for batteries in the chest?", true);
+$quiz->checkbox("Does it avoid the need for closed-loop systems?", "both"); // N/A
+$quiz->checkbox("Does it improve patient-specific customization?", true);
+$quiz->checkbox("Does it reduce heat generation in tissue?", true);
+$quiz->checkbox("Can it process signals more efficiently?", true);
+$quiz->checkbox("Is it less flexible than digital systems?", "both"); // not really
+$quiz->checkbox("Does it support real-time feedback integration?", true); // programmable chips
+$quiz->checkbox("Is it more susceptible to noise?", false);
+
+$quiz->print();
+
+if($quiz->user_data) {
+?>
+
+<p class="info">
+Analog Deep Brain Stimulation (DBS) offers transformative advantages, including energy efficiency, smaller implant sizes, and reduced heat generation, enabling integration without a chest battery. The technology supports real-time feedback and patient-specific customization, especially when enhanced by Anabrid’s hybrid analog-digital processors, which overcome the limitations of purely analog systems. Contrary to common misconceptions, analog systems are not inherently more noise-prone when properly designed. By combining the strengths of analog efficiency and digital flexibility, this approach sets a new standard for streamlined and effective DBS technology.
+</p>
+
+<?php
+} // solution
+
+$quiz->hand_in();
+
+?>
+</form>
 
 </section>

@@ -7,7 +7,7 @@ $today = date("j"); // without leading zero, thus int
 $month = date("m");
 if($month < 12) $today = 1;
 
-#$today = "4";
+#$today = "6";
 
 function read_day($day_file, $section) {
     file_get_contents($day_file);
@@ -139,7 +139,7 @@ if(isset($_GET['user'])) {
     if($day > $today)  {
         header("HTTP/1.1 401 Unauthorized");
         print "<p style='text-align:center'>Nice try! This door is not yet open.</p>";
-        print "<p style='text-align:center'><a href='https://xkcd.com/838/'>This incident will be reported.</a></p>";
+        print "<p style='text-align:center'><a href='https://xkcd.com/838/'><img src='https://imgs.xkcd.com/comics/incident.png'></a></p>";
         print '<p>&nbsp;</p>';
     } else {
         $wildcard = '*'; # globbing any extension or directory
