@@ -94,7 +94,7 @@ class FlatFile {
     <?php
     
     function og($prop, $default_content) {
-        $key = "anabrid_og_".$prop;
+        $key = "anabrid_".$prop;
         $content = isset($_GET[$key]) ? htmlspecialchars($_GET[$key]) : $default_content;
         echo "\t<meta property='og:$prop' content=\"$content\">\n";
     }
