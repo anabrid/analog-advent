@@ -41,7 +41,7 @@ if($user_data) {
 
 if(!$user_data) {
     $disabled = $token ? "" : "disabled";
-    echo "<p><textarea placeholder='Your ideas come here' $disabled style='width:100%; min-height: 7em'></textarea>";
+    echo "<p><textarea placeholder='Your ideas come here' name='$field_name' $disabled style='width:100%; min-height: 7em'></textarea>";
     print '<p><button type="submit" '.$disabled.'>Hand in</button></p>';
 } else {
     ?>
@@ -54,6 +54,7 @@ if(!$user_data) {
 }
 
 ?>
+</form>
 
 </section>
 
