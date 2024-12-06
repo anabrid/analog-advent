@@ -90,13 +90,24 @@ class FlatFile {
         window.cookie_name = "<?php echo $cookie_name; ?>";
         window.cookie_split = "<?php echo $cookie_split; ?>";
     </script>
- 
-    <meta property="og:title" content="Computational Christmas by Anabrid">
-    <meta property="og:description" content="24 little adventures and riddles allow you to enter the world of analog computing.">
-    <meta property="og:image" content="https://analog.wtf/graphics/screenshot.png">
-    <meta property="og:url" content="https://analog.wtf">
-    <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Computational Christmas by Anabrid">   
+    
+    <?php
+    
+    function og($prop, $default_content) {
+        $key = "anabrid_og_".$prop;
+        $content = isset($_GET[$key]) ? htmlspecialchars($_GET[$key]) : $default_content;
+        echo "\t<meta property='$prop' content=\"$content\">\n";
+    }
+    
+    og("title", "Computational Christmas by Anabrid");
+    og("description", "24 little adventures and riddles allow you to enter the world of analog computing");
+    og("image", "https://analog.wtf/graphics/screenshot.png");
+    og("url", "https://analog.wtf");
+    og("type", "article");
+    og("site_name", "Computational Christmas by Anabrid");
+    
+    ?>
+
 </head>
 <body>
 
