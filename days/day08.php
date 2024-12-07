@@ -23,11 +23,11 @@ $target_directory = "../user_data";
 if(!preg_match('/^[a-zA-Z0-9._]+$/', $target_filename)) die("Illegal token");
 $user_filename = "$target_directory/$target_filename";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['charge_profile'])) {
+if ($token && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['charge_profile'])) {
     move_uploaded_file($_FILES['charge_profile']['tmp_name'], $user_filename);
 }
 
-if(!file_exists($user_filename)) {
+if(!file_exists($user_filename) || !$token) {
 
 ?>
 <noscript>This form requires javascript to be enabled</noscript>
@@ -36,8 +36,12 @@ if(!file_exists($user_filename)) {
     width="600" height="400">
 
 <p id="submit_area">
+<?php if($token) { ?>
     <input type="button" value="Save Image and Hand in" class="primary" id="save_submit">
     <input type="button" value="Clear Image" class="secondary" id="clear">
+<?php } else { ?>
+    <p class="info">Please <a href='?user'>register first</a>, then you can hand in.</p>
+<?php } ?>
 </p>
 
 <script type="text/javascript">
