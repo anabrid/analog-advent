@@ -7,7 +7,7 @@ $today = date("j"); // without leading zero, thus int
 $month = date("m");
 if($month < 12) $today = 1;
 
-#$today = "6";
+#$today = "8";
 
 function read_day($day_file, $section) {
     file_get_contents($day_file);
