@@ -1,20 +1,18 @@
-<h1>Wearables</h1>
+<h1>Weather simulation (Analog HPC)</h1>
 
 <section class="story">
 
-<p>Helmi stepped back to admire their latest creation—a sleek new line of outfits for the workshop team and Santa himself. The designs were bold and festive, blending deep reds, shimmering greens, and accents of gold thread that seemed to glow softly in the dim workshop light. But the real innovation was the embedded wearable technology: health monitors, communication links, and even navigation aids for Santa’s suit. The problem? All these gadgets were energy vampires, draining their tiny power cells faster than a reindeer could blink.
+<p>The North Pole’s High-Performance Computing (HPC) center buzzed with activity as Helmi stared at the monitors. Weather forecasts for Christmas Eve—critical for sleigh navigation—were trickling in at a snail’s pace, lagging hours behind real-time conditions. “This won’t cut it,” Helmi muttered, shaking their head as yet another snowstorm’s trajectory failed to compute on time. The digital systems were powerful but glacially slow when it mattered most, guzzling energy like an overheating toy train.
 
-<p>Helmi frowned. “We can’t have style without sustainability,” they declared, turning to their workbench. Drawing from their growing expertise, Helmi began designing energy-harvesting analog processors. These tiny devices, powered by motion, body heat, or even ambient light, processed data directly without the energy-hungry layers of digital computation. By the end of the day, the prototypes were sewn into the fabric, their circuits seamlessly integrated with the festive designs. 
+<p>Helmi rolled up their sleeves and headed to the lab. Using fluid dynamics principles and analog components, they designed a supercomputer that mimicked the very essence of weather patterns. By directly simulating airflows, pressures, and temperatures through mechanical and electrical systems, the analog supercomputer crunched forecasts in mere seconds—orders of magnitude faster than digital models. Best of all, it was 10 million times more energy-efficient.
 
-<p>Helmi slipped a reimagined jacket onto a mannequin and smiled. “Style, tech, and efficiency—now *that’s* holiday-ready.” Santa, watching from his armchair, chuckled approvingly. "You’ve outdone yourself again, Helmi."
+<p>By nightfall, the prototype was humming away, predicting weather shifts with uncanny accuracy. Helmi grinned as they watched the storm patterns align on the display. “No delays, no wasted energy—just pure, analog brilliance,” they said, jotting a note for Santa. “Weather won’t stand in our way this year.”
 
 </section>
 
 <section class="challenge">
 
-Potentials of wearables?
-Or: What wearables do you already have today?
-Where do you think sensorics make a difference?
 
+<p>Über Rebound Effect (Jevens Paradoxon) sprechen!
 
 </section>
