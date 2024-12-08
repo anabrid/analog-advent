@@ -80,6 +80,63 @@ class MultipleChoice {
     
 };
 
+class SingleChoice {
+    var $field_name;
+    var $correct_solution;
+    
+    function __construct($day) {
+        global $today, $token; // from global index
+        $this->day = $day;
+        $this->field_name = "singleChoice".$day;
+        $this->field_name_php = $this->field_name; // a HTML form name where php deconstructs an array
+        $this->token = $token;
+     
+        # path is relative to index.php...
+        $this->storage_file = new FlatFile("../user_data/day" . sprintf("%02d", $day) . ".csv");
+
+        if(isset($_POST[$this->field_name]))
+            $this->storage_file->putJSON($this->token, $_POST[$this->field_name]);
+        
+        $this->user_data = $this->storage_file->getJSON($token);
+    }
+        
+    function option($name, $desc) {
+        $id = $this->field_name . "-option-" . $name;
+        $option_is_enabled = !$this->user_data;
+        $option_is_correct = $this->user_data && ($name == $this->correct_solution);
+        $user_is_correct = $this->user_data && ($this->user_data == $this->correct_solution);
+                
+        $disabled_html = $this->token && $option_is_enabled ? "" : "disabled";
+        $checked_html = ($this->user_data && ($this->user_data == $name)) ? "checked" : "";
+        $correct_class = $user_is_correct ? "correct" : "wrong";
+        $correct_text = $option_is_correct ? "<span class='$correct_class'>correct answer</span>" : "";
+        
+        print "<div><label for='$id'><input type='radio' name='{$this->field_name_php}' id='$id' $checked_html value='$name' $disabled_html> $desc $correct_text</label></div>";
+    }
+    
+    function opening() {
+        //var_dump($this);
+        
+        if($this->user_data) {
+            print "<p class='info'>Thanks for participating in this day as <em>{$this->token}</em>. We checked your answers, please see below.</p>";
+        } else if($this->token) {
+            print "<p class='info'>You are logged in as <em>{$this->token}</em></p>";
+        } else {
+            print "<p class='info'>Vote is open. Please <a href='?user'>register first</a>.</p>";
+        }
+    }
+    
+    function hand_in() {
+        if(!$this->user_data) {
+            $disabled = $this->token ? "" : "disabled";
+            print '<p><button type="submit" '.$disabled.'>Hand in</button></p>';
+        } else if($this->day != 24) {
+            print '<p><a href="?day='.($this->day+1).'">Go to next day</a></p>';
+        }
+    }
+    
+};
+
 // Kind of the same but for numbers...
 
 class NumberQuiz {
