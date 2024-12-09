@@ -2,7 +2,10 @@
 
 <section class="story">
 
-<p>Helmi stepped back to admire their latest creation—a sleek new line of outfits for the workshop team and Santa himself. The designs were bold and festive, blending deep reds, shimmering greens, and accents of gold thread that seemed to glow softly in the dim workshop light. But the real innovation was the embedded wearable technology: health monitors, communication links, and even navigation aids for Santa’s suit. The problem? All these gadgets were energy vampires, draining their tiny power cells faster than a reindeer could blink.
+<img src="graphics/canva10.jpg" class="main" title="I whish this was not Dalle/ChatGPT generated. If you can do figures and want wo work with us, drop us a mail.">
+
+
+<p>Helmi stepped back to admire their latest creation—a sleek new line of outfits for the reindeer team and Santa himself. The designs were bold and festive, blending deep reds, shimmering greens, and accents of gold thread that seemed to glow softly in the dim workshop light. But the real innovation was the embedded wearable technology: health monitors, communication links, and even navigation aids for Santa’s suit. The problem? All these gadgets were energy vampires, draining their tiny power cells faster than a reindeer could blink.
 
 <p>Helmi frowned. “We can’t have style without sustainability,” they declared, turning to their workbench. Drawing from their growing expertise, Helmi began designing energy-harvesting analog processors. These tiny devices, powered by motion, body heat, or even ambient light, processed data directly without the energy-hungry layers of digital computation. By the end of the day, the prototypes were sewn into the fabric, their circuits seamlessly integrated with the festive designs. 
 
