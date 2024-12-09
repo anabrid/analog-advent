@@ -11,6 +11,7 @@
 class MultipleChoice {
     var $field_name;
     var $valid_values = [];
+    var $display_correct_text = true;
     
     function __construct($day) {
         global $today, $token; // from global index
@@ -20,7 +21,8 @@ class MultipleChoice {
         $this->token = $token;
      
         # path is relative to index.php...
-        $this->storage_file = new FlatFile("../user_data/day" . sprintf("%02d", $day) . ".csv");
+        if(strlen($day) == 1) $day = "0" . $day;
+        $this->storage_file = new FlatFile("../user_data/day$day.csv");
 
         if(isset($_POST[$this->field_name]))
             $this->storage_file->putJSON($this->token, $_POST[$this->field_name]);
@@ -28,7 +30,7 @@ class MultipleChoice {
         $this->user_data = $this->storage_file->getJSON($token);
     }
     
-    function checkbox($option, $valid_value) {
+    function checkbox($option, $valid_value="both") {
         $this->valid_values[$option] = $valid_value; // valid value is a boolean
     }
     
@@ -58,7 +60,7 @@ class MultipleChoice {
                 }
 
                 $correct_class = $correct ? "correct" : "wrong";
-                $correct_text = $correct_text ? "<span class='$correct_class'>$correct_text</span>" : "";
+                $correct_text = $this->display_correct_text && $correct_text ? "<span class='$correct_class'>$correct_text</span>" : "";
                 print "<div><input type='checkbox' $checked_html disabled=disabled> $key $correct_text</div>";
             } else {
                 $disabled_html = !$this->token || $this->user_data ? "disabled=disabled" : '';
