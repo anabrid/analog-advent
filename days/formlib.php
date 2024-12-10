@@ -181,4 +181,89 @@ class NumberQuiz {
             print '<p><a href="?day='.($this->day+1).'">Go to next day</a></p>';
         }
     }
-}
+};
+
+class RankQuiz {
+    var $field_name;
+    var $true_values = [];
+    
+    function __construct($day) {
+        global $today, $token; // from global index
+        $this->day = $day;
+        $this->field_name = "rankQuiz".$day;
+        $this->field_name_php = $this->field_name; //. '[]'; // a HTML form name where php deconstructs an array
+        $this->token = $token;
+     
+        # path is relative to index.php...
+        if(strlen($day) == 1) $day = "0" . $day;
+        $this->storage_file = new FlatFile("../user_data/day$day.csv");
+
+        if(isset($_POST[$this->field_name]))
+            $this->storage_file->putJSON($this->token, $_POST[$this->field_name]);
+        
+        $this->user_data = $this->storage_file->getJSON($token);
+    }
+    
+    function slider($option, $true_value) {
+        $this->true_values[$option] = $true_value; // valid value is a boolean
+    }
+    
+    function print() {
+        //var_dump($this);
+        
+        if($this->user_data) {
+            print "<p class='info'>Thanks for participating in this day as <em>{$this->token}</em>. We checked your answers, please see below.</p>";
+            $this->user_data = (array) $this->user_data;
+            asort($this->user_data); // sort by value
+            $this->user_data = array_reverse($this->user_data);
+            
+            $this->true_values = (array) $this->true_values;
+            asort($this->true_values);
+            $this->true_values = array_reverse($this->true_values);
+        } else if($this->token) {
+            print "<p class='info'>You are logged in as <em>{$this->token}</em></p>";
+        } else {
+            print "<p class='info'>Vote is open. Please <a href='?user'>register first</a>.</p>";
+        }
+       
+       if(!$this->user_data) {
+           
+       print "<p>Slider maximum left means no contribution, slider maximum right means total world contribution. You should ensure all your values sum up to 100%</p>";
+       print "<table>";
+        foreach($this->true_values as $key => $true_value) {
+            $id = md5($this->field_name . $key);
+            if($this->user_data) {
+                #print "<div>$key: You: {$this->user_data[$key]} but it is $true_value</div>";
+            } else {
+                $disabled_html = !$this->token ? "disabled=disabled" : '';
+                $key = htmlentities($key);
+                print "<tr><td style='text-align: right'>$key<td>
+                    <input type='range' name='{$this->field_name_php}[$key]' value='0' min='0' max='100' $disabled_html
+                    oninput='document.getElementById(\"$id\").textContent=this.value; updateSum();'>
+                    <td><span id='$id'>0</span>%</tr>";
+            }
+        }
+        ?>
+        </table>
+        <p>Current sum: <span id="theSum">0</span>%
+        <script>
+            function updateSum() {
+                let sum=0
+                document.querySelectorAll("input[type=range]").forEach(e => { sum += Number(e.value); });
+                document.getElementById("theSum").textContent = sum;
+            }
+        </script>
+        <?php
+        
+       }// not user data
+    }
+    
+    function hand_in() {
+        if(!$this->user_data) {
+            $disabled = $this->token ? "" : "disabled";
+            print '<p><button type="submit" '.$disabled.'>Hand in</button></p>';
+        } else if($this->day != 24) {
+            print '<p><a href="?day='.($this->day+1).'">Go to next day</a></p>';
+        }
+    }
+};
