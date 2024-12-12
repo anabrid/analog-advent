@@ -20,6 +20,6 @@
 
 <section class="challenge">
 
-Maybe something about self-driving cars?
+<p>Today was a stressful day for Helmi. No task for today!
 
 </section>
