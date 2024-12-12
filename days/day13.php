@@ -2,6 +2,8 @@
 
 <section class="story">
 
+<img src="graphics/canva13.jpg" class="main" title="I whish this was not Dalle/ChatGPT generated. If you can do figures and want wo work with us, drop us a mail.">
+
 <p>Helmi stood in the sleigh workshop, arms crossed, staring at the old physical wind tunnel tucked into the corner. It was a relic of the past—power-hungry, expensive to run, and requiring hours just to set up a single test. Digital simulations had been considered, but with the complex aerodynamics of Santa’s sleigh, they would take months to process on even the fastest digital systems. “Not an option,” Helmi muttered, glancing at the clock. Christmas Eve wasn’t waiting for anyone.
 
 <p>Then Helmi’s eyes lit up. The analog supercomputer they had built earlier for weather simulations could be repurposed. Aerodynamics, after all, was just another flow problem. They quickly configured the system, feeding in parameters for airflows, sleigh shape, and reindeer velocity. The analog machine whirred to life, processing the complex equations in real time, with its dials, oscillators, and feedback circuits painting a clear picture of how the sleigh would perform in flight.
