@@ -170,7 +170,7 @@ async function prefillCanvas(canvas, imageUrl) {
     
     ?>
     
-    <p class='info'>Thank you for your submission as <strong>$token</strong>.
+    <p class='info'>Thank you for your submission as <strong><?php echo $token; ?></strong>.
       Here is the picture you have drawn (on the left):</p>
 
     <p>
