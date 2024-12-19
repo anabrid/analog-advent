@@ -14,16 +14,42 @@ By the end of the day, Helmi had a working prototype. Watching the oscillators s
 </section>
 <section class="challenge">
 
-Something with oscillators would be nice.
+<p>Given the enormous success of LLMs and generative AI, Helmi couldn’t help but ponder how to implement AI on more efficient hardware. Isn’t it fascinating—and a little maddening—that modern AI is so often held back by hardware limitations? Let’s see what you know about neuromorphic computing!</p>
 
+<form method="post" class="inplace">
+<?php
+include 'formlib.php';
 
-<p>Today we could not embed a neuromorphic simulation right in your browser.
-However, here are a few standalone recreational simulations:
+$quiz = new MultipleChoice("19");
+
+$quiz->checkbox("Neuromorphic computing mimics the structure and function of the human brain to process information.", true);
+$quiz->checkbox("Spiking neural networks communicate using continuous signals rather than discrete spikes.", "both");
+$quiz->checkbox("Oscillator-based neural networks can solve problems like MNIST digit recognition with significantly fewer nodes than traditional networks.", true);
+$quiz->checkbox("Complex mathematical neuron models allow for richer dynamics compared to simple artificial neurons.", true);
+$quiz->checkbox("Traditional deep learning networks always outperform unconventional neural networks in all scenarios.", false);
+
+$quiz->print();
+if($quiz->user_data) {
+?>
+
+<div class="info">Thanks for participating! You unlocked some <strong>Bonus Material</strong>: Given that we could not embed a neuromorphic simulation right in this quiz today, here are a few standalone recreational and simple to grasp simulations of how AI or neurons actually work:
 
 <ul>
-<li>Conventional hidden layer neural networks with the <a href="https://playground.tensorflow.org/">Tensorflow Playground</a>
-<li>An actual <a href="https://nbnch.io/s/xnzs-qhdf">biologically realistic neural network</a> 
-by <a href="neuronbench.com">NeuronBench</a>
-<li><a href="http://netpyne.opensourcebrain.org/">NetPyNE</a> is another academical, biological neuron simulation by the <a href="http://www.opensourcebrain.org/">Open Source Brain</a> project. Click on the <em>Examples</em> menu to load a demo.
+<li>Conventional hidden layer neural networks with the <a target="_blank" href="https://playground.tensorflow.org/">Tensorflow Playground</a>
+<li>An actual <a target="_blank" href="https://nbnch.io/s/xnzs-qhdf">biologically realistic neural network</a> 
+by <a target="_blank" href="neuronbench.com">NeuronBench</a>
+<li><a target="_blank" href="http://netpyne.opensourcebrain.org/">NetPyNE</a> is another academical, biological neuron simulation by the <a target="_blank" href="http://www.opensourcebrain.org/">Open Source Brain</a> project. Click on the <em>Examples</em> menu to load a demo.
+</ul>
+</div>
+
+<?php 
+
+}
+$quiz->hand_in();
+
+?>
+</form>
+
+
 
 </section>
