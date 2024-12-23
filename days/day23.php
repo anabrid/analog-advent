@@ -16,9 +16,39 @@ Looking back at the bustling workshop, Helmi grinned. “Whether it’s friends 
 </section>
 <section class="challenge">
 
-Take a popular interconnection scheme such as the DWave Chimera graph and discuss it:
+<img src="graphics/chimera.png" style="float:right; max-width:40%; min-width:300px">
 
-* How many connections can be maximally made?
-* What is the sparsity?
+<p>Last day, last quiz! Helmi stumbled upon interconnection schemes which are important for analog computers in the same way as they are for quantum computers. Let's inspect the DWave Chimera topology, which is shown on the right. What do you know about graph theory?
+
+
+<form method="post" class="inplace">
+<?php
+include 'formlib.php';
+
+$quiz = new MultipleChoice("23");
+
+$quiz->checkbox("A Chimera graph is a type of sparse graph designed for quantum annealing applications.", true);
+$quiz->checkbox("A Chimera graph is a complete graph with no limitations on node connectivity.", false);
+$quiz->checkbox("The maximum number of connections a node can have in a standard Chimera graph is six.", true);
+$quiz->checkbox("In a Chimera graph, every node is connected to every other node in the graph.", false);
+$quiz->checkbox("The sparsity of a Chimera graph means it has fewer edges compared to a fully connected graph of the same size.", true);
+$quiz->checkbox("The shown graph with 8 nodes has exactly 8 edges if it forms a perfect cycle.", false);
+$quiz->checkbox("An 8-node Chimera graph can have up to 28 edges in a complete graph but usually has far fewer.", true);
+
+$quiz->print();
+if($quiz->user_data) {
+?>
+
+<p class="info">
+Thank you for participating!
+</p>
+
+<?php 
+
+}
+$quiz->hand_in();
+
+?>
+</form>
 
 </section>
