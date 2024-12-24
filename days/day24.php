@@ -16,6 +16,13 @@ The elves cheered, the reindeer stomped in excitement, and Helmi couldn’t help
 
 <section class="challenge">
 
-No challenge but declare the winner here.
-
+<p><?php if($token) {
+    extract(user_evaluate_results($token));
+?>
+    Thank you for your participation in the quizzes in this advent calendar. There is no quiz today. Instead, it is time
+    to <a href="?results">review your participation at the results overview</a>. <?php echo $sentence; ?>
+<?php } else { ?>
+    It might still be not too late to participate in the quiz. Head over to <a href="?user">user registration</a> and
+    complete a good part of the advent calendar quizzes in order to take part in the prize winning.
+<?php } /* endif */ ?>
 </section>

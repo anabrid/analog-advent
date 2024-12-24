@@ -220,4 +220,11 @@ dl dd {
    margin-bottom: 1.5em;
 }
 
+table td {
+    border: 1px solid white;
+    padding: .3em;
+}
 
+table {
+    margin: 1em 0;
+}

@@ -153,6 +153,117 @@ function randomPassword( $len = 10, $ucfirst = true, $spchar = false ){
 	return $password;
 }
 
+function user_day_results($token) {
+    $user_data_dir = "../user_data/";
+    $user_made_days = array();
+    for($day = 2; $day < 24; $day++) {
+        $user_made_day = false;
+        $daypattern = $user_data_dir . "day" . sprintf("%02d", $day) . "*";
+        $dayfiles = glob($daypattern);
+        #print($daypattern); var_dump($dayfiles);
+        foreach($dayfiles as $dayfile) {
+            if(str_contains($dayfile, ".csv")) {
+                $daycsv = file($dayfile);
+                // This is a bit inaccurate: we just search for the token.
+                // error prone if somebody injected it into the payload, but fair enough.
+                $user_made_day = in_array($token, $daycsv);
+                // note that if there are multiple CSVs per day, the last one will
+                // determine whether the user contributed or not. This is okay.
+            } else if(str_contains($dayfile, $token)) {
+                // User-submitted files and the user made a contribution
+                $user_made_day = true;
+            }
+        }
+        $user_made_days[$day] = $user_made_day;
+    }
+    return $user_made_days;
+}
+
+function user_has_any_contributions($token) {
+    $results = user_day_results($token);
+    $has_contribs = false;
+    foreach($results as $k => $v) { if($v) $has_contribs = true; }
+    return $has_contribs;
+}
+
+function user_evaluate_results($token) {
+    $user_results = user_day_results($token);
+    $days_participated = 0;
+    foreach($user_results as $day => $participated) {
+        if($participated) $days_participated += 1;
+    }
+    $total_days = 24 - 3; // 3
+    $participation_percentage = round(100 * $days_participated / $total_days);
+    $minimum_required_days = 15;
+    $eligable = $days_participated > $minimum_required_days;
+    $eligable_text = $eligable ? "eligable" : "not eligable";
+    $eligable_after = $eligable ? "Quick, hurry up and make more quizzes to get eligable!" : "Good luck!";
+    $sentence = "
+    All in all, you participated in
+    <strong>$days_participated of $total_days quizzes</strong>, giving you a participation rate
+    of <strong>$participation_percentage%</strong>. The minimum required quizzes in order to be part
+    of the quiz drawing are $minimum_required_days days. Therefore, you <strong>$eligable_text</strong>
+    to be a potential quiz winner. $eligable_after
+    ";    
+    
+    return compact("days_participated", "total_days", "participation_percentage", "minimum_required_days", "eligable", "sentence");
+}
+
+function grep_line($file, $pattern) {
+    $lines = file($file, FILE_IGNORE_NEW_LINES);
+    $matches = preg_grep($pattern, $lines);
+    return $matches ? reset($matches) : null;
+}
+
+function print_user_results() {
+    global $token;
+    if(!$token) {
+        print "User has not registered yet.";
+        return;
+    }
+    
+    $user_results = user_day_results($token);
+    $eval = user_evaluate_results($token);
+    $userinfo = readUserInfo($token);
+?>
+<section class="day">
+    <h2>Quiz Participation</h2>
+    
+    <table>
+        <tr><td>Day 1 <td>Registration <td><?php
+            echo "Registered as $token.";
+            $alert = "";
+            if($userinfo && trim($userinfo) != '')
+                echo "Accomplished : ". htmlentities($userinfo);
+            else {
+                $alert = "<p class='info'>Warning: No contact credentials provided!</p>";
+                echo $alert; 
+            }
+        ?></tr>
+        <?php
+        $no_quiz = "(no quiz this day)";
+        foreach($user_results as $day => $participated) {
+            // just a stupid way of reading out the day topic
+            $quiztitle = strip_tags(grep_line("../days/day" . sprintf("%02d", $day) . ".php", '<h1>'));
+            $participated_string = ($participated ? "Yes" : "No");
+            if($day == "12" || $day == "20" || $day == "24") {
+                $participated_string = $no_quiz;
+            }
+            echo "<tr><td>Day $day <td>$quiztitle <td>$participated_string";
+        }
+        ?>
+        <tr><td>Day 24 <td>Evaluation <td><?php echo $no_quiz; ?>
+    </table>
+    
+    <p><?php echo $eval['sentence']; ?></p>
+    <?php if($alert) echo "$alert <p>In order to participate in the winning drawing, you MUST register with your contact details."; ?>
+    <p>&nbsp;</p>
+</section>
+<?php
+    
+    
+} // end of print_user_results()
+
 function print_user_managament_section() {
     global $token;
     $userinfo = readUserInfo($token);
@@ -188,13 +299,20 @@ function print_user_managament_section() {
     you assign another token, all your results will be lost. This is equivalent to a logout.
     You can choose the token freely but
     we suggest you use the rather strong ones proposed by the system. This is your current token:
+    
+    <!--<pre><?php echo var_dump(user_day_results($token)); ?></pre>-->
 
     <p style="text-align:center">
         <input type="hidden" name="submitted" value="true">
         <input type="text" id="token-field" name="token" value="loading...">
         <button id="refresh-token" onclick="if(confirm('Are you sure you want to wipe your token and assign a new one? This deletes all your replies and cannot be undone. Maybe save your old token first.')) new_token(); return false;">Assign another token</button>
-
     </p>
+    
+    <?php
+    if(user_has_any_contributions($token)) {
+        echo '<p class="info">Attention: You have saved participation results for at least one day. Changing your token will wipe your results!</p>';
+    }
+    ?>
     
     <noscript>
         <p class="info"><b>Attention</b>: The Advent calendar uses JavaScript for user managament. Sorry, without javascript

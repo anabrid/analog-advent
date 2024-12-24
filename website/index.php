@@ -7,7 +7,7 @@ $today = date("j"); // without leading zero, thus int
 $month = date("m");
 if($month < 12) $today = 1;
 
-#$today = "8";
+#$today = "20";
 
 function read_day($day_file, $section) {
     file_get_contents($day_file);
@@ -124,6 +124,8 @@ class FlatFile {
 <?php
 if(isset($_GET['user'])) {
     print_user_managament_section();
+} else if(isset($_GET['results'])) {
+    print_user_results();
 } else if(isset($_GET['faq'])) {
     include 'faq.php';
 } else if(!$day) {
