@@ -195,7 +195,7 @@ function user_evaluate_results($token) {
     }
     $total_days = 24 - 3; // 3
     $participation_percentage = round(100 * $days_participated / $total_days);
-    $minimum_required_days = 15;
+    $minimum_required_days = 13;
     $eligable = $days_participated > $minimum_required_days;
     $eligable_text = $eligable ? "eligable" : "not eligable";
     $eligable_after = $eligable ? "Quick, hurry up and make more quizzes to get eligable!" : "Good luck!";
