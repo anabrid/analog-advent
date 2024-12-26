@@ -14,7 +14,12 @@ for($day = 1; $day <= 24; $day++) $fields[] = "day$day";
 fputcsv($fp, $fields, $sep, '"', ''); // write header line
 
 foreach(file($user_file) as $ln => $line) {
-    list($token, $contact) = explode(" ", $line, 2);
+    $userline = explode(" ", $line, 2);
+    if(count($userline) < 2) continue;
+    list($token, $contact) = $userline;
+    
+    $token = trim($token);
+    if(!$token) continue;
     
     $user_results = user_day_results($token);
     extract(user_evaluate_results($token));

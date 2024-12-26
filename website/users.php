@@ -156,6 +156,7 @@ function randomPassword( $len = 10, $ucfirst = true, $spchar = false ){
 function user_day_results($token) {
     $user_data_dir = "../user_data/";
     $user_made_days = array();
+    $quote_token = preg_quote($token);
     for($day = 2; $day < 24; $day++) {
         $user_made_day = false;
         $daypattern = $user_data_dir . "day" . sprintf("%02d", $day) . "*";
@@ -166,7 +167,7 @@ function user_day_results($token) {
                 $daycsv = file($dayfile);
                 // This is a bit inaccurate: we just search for the token.
                 // error prone if somebody injected it into the payload, but fair enough.
-                $user_made_day = in_array($token, $daycsv);
+                $user_made_day = count(preg_grep("/$quote_token/", $daycsv));
                 // note that if there are multiple CSVs per day, the last one will
                 // determine whether the user contributed or not. This is okay.
             } else if(str_contains($dayfile, $token)) {
